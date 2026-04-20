@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TUM MI — Priprema za ispit</title>
-  <meta name="description" content="Kviz za pripremu međuispita iz Temelja umjetnih mišića / Medicinske instrumentacije" />
+  <meta name="description" content="Kviz za pripremu međuispita iz Tehnologije u medicini / Medicinske instrumentacije" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -24,6 +24,7 @@
       --wrong: #9b1c2e;
       --wrong-bg: #f0d8dc;
       --amber: #b7791f;
+      --amber-bg: #f5e9d2;
       --shadow: 0 1px 0 rgba(21, 24, 28, 0.04), 0 8px 24px -12px rgba(21, 24, 28, 0.15);
     }
 
@@ -39,7 +40,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Subtle paper grain */
     body::before {
       content: '';
       position: fixed;
@@ -58,7 +58,6 @@
       z-index: 1;
     }
 
-    /* Header */
     .masthead {
       display: flex;
       align-items: baseline;
@@ -81,7 +80,6 @@
       letter-spacing: 0.12em;
     }
 
-    /* Screens */
     .screen { animation: fadeIn 0.35s ease both; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
@@ -89,11 +87,7 @@
     }
     .hidden { display: none !important; }
 
-    /* Start screen */
-    .hero {
-      text-align: left;
-      padding: 8px 0 24px;
-    }
+    .hero { text-align: left; padding: 8px 0 24px; }
     .eyebrow {
       font-size: 12px;
       letter-spacing: 0.18em;
@@ -110,11 +104,7 @@
       letter-spacing: -0.02em;
       margin-bottom: 20px;
     }
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-      font-weight: 500;
-    }
+    h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
     .lede {
       font-size: 17px;
       color: var(--ink-soft);
@@ -145,13 +135,10 @@
       justify-content: space-between;
       padding: 12px 0;
       border-top: 1px dashed var(--rule);
+      gap: 12px;
     }
     .option-row:first-of-type { border-top: 0; padding-top: 4px; }
-    .option-row label {
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-    }
+    .option-row label { font-size: 15px; font-weight: 500; cursor: pointer; }
     .chips { display: flex; gap: 6px; flex-wrap: wrap; }
     .chip {
       appearance: none;
@@ -167,13 +154,8 @@
       transition: all 0.15s ease;
     }
     .chip:hover { border-color: var(--ink); color: var(--ink); }
-    .chip.active {
-      background: var(--ink);
-      color: var(--bg-card);
-      border-color: var(--ink);
-    }
+    .chip.active { background: var(--ink); color: var(--bg-card); border-color: var(--ink); }
 
-    /* Toggle */
     .toggle {
       position: relative;
       width: 44px; height: 24px;
@@ -196,7 +178,6 @@
     .toggle.on { background: var(--accent); }
     .toggle.on::after { transform: translateX(20px); }
 
-    /* Buttons */
     .btn {
       appearance: none;
       border: none;
@@ -222,16 +203,6 @@
     .btn-primary .arrow { transition: transform 0.15s ease; }
     .btn-primary:hover .arrow { transform: translateX(4px); }
 
-    .btn-secondary {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid var(--rule);
-      padding: 12px 20px;
-      font-size: 14px;
-    }
-    .btn-secondary:hover { border-color: var(--ink); }
-
-    /* Quiz screen */
     .progress-bar {
       height: 3px;
       background: var(--rule);
@@ -252,9 +223,40 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
     .progress-info .score { color: var(--accent); font-weight: 600; }
+
+    .source-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      border: 1px solid transparent;
+    }
+    .source-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+    .source-badge.official {
+      background: var(--correct-bg);
+      color: var(--correct);
+      border-color: rgba(26, 107, 79, 0.15);
+    }
+    .source-badge.official::before { background: var(--correct); }
+    .source-badge.new {
+      background: var(--amber-bg);
+      color: var(--amber);
+      border-color: rgba(183, 121, 31, 0.2);
+    }
+    .source-badge.new::before { background: var(--amber); }
 
     .question {
       font-family: 'Fraunces', serif;
@@ -262,7 +264,7 @@
       font-size: clamp(22px, 3.5vw, 28px);
       line-height: 1.3;
       letter-spacing: -0.01em;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       color: var(--ink);
     }
     .question-num {
@@ -271,7 +273,7 @@
       letter-spacing: 0.12em;
       color: var(--amber);
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-family: 'DM Sans', sans-serif;
       text-transform: uppercase;
     }
@@ -320,27 +322,10 @@
       transition: all 0.15s ease;
     }
     .answer:hover:not(:disabled) .letter { border-color: var(--ink); color: var(--ink); }
-
-    .answer.correct {
-      background: var(--correct-bg);
-      border-color: var(--correct);
-      color: var(--correct);
-    }
-    .answer.correct .letter {
-      background: var(--correct);
-      color: white;
-      border-color: var(--correct);
-    }
-    .answer.wrong {
-      background: var(--wrong-bg);
-      border-color: var(--wrong);
-      color: var(--wrong);
-    }
-    .answer.wrong .letter {
-      background: var(--wrong);
-      color: white;
-      border-color: var(--wrong);
-    }
+    .answer.correct { background: var(--correct-bg); border-color: var(--correct); color: var(--correct); }
+    .answer.correct .letter { background: var(--correct); color: white; border-color: var(--correct); }
+    .answer.wrong { background: var(--wrong-bg); border-color: var(--wrong); color: var(--wrong); }
+    .answer.wrong .letter { background: var(--wrong); color: white; border-color: var(--wrong); }
     .answer.dimmed { opacity: 0.5; }
 
     .feedback {
@@ -358,16 +343,8 @@
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .feedback.correct {
-      background: var(--correct-bg);
-      color: var(--correct);
-      border-left: 3px solid var(--correct);
-    }
-    .feedback.wrong {
-      background: var(--wrong-bg);
-      color: var(--wrong);
-      border-left: 3px solid var(--wrong);
-    }
+    .feedback.correct { background: var(--correct-bg); color: var(--correct); border-left: 3px solid var(--correct); }
+    .feedback.wrong { background: var(--wrong-bg); color: var(--wrong); border-left: 3px solid var(--wrong); }
     .feedback-text { font-weight: 600; }
 
     .next-btn {
@@ -384,6 +361,7 @@
       align-items: center;
       gap: 8px;
       transition: all 0.15s ease;
+      flex-shrink: 0;
     }
     .next-btn:hover { background: var(--accent-hover); transform: translateX(2px); }
 
@@ -408,7 +386,6 @@
       color: var(--ink-soft);
     }
 
-    /* Results */
     .results-card {
       text-align: center;
       padding: 48px 24px;
@@ -440,16 +417,9 @@
       margin-top: 8px;
       margin-bottom: 20px;
     }
-    .score-message {
-      color: var(--ink-soft);
-      font-size: 15px;
-      max-width: 40ch;
-      margin: 0 auto;
-    }
+    .score-message { color: var(--ink-soft); font-size: 15px; max-width: 40ch; margin: 0 auto; }
 
-    .review-section {
-      margin-bottom: 28px;
-    }
+    .review-section { margin-bottom: 28px; }
     .review-section h3 {
       font-family: 'Fraunces', serif;
       font-weight: 600;
@@ -468,6 +438,18 @@
       border-radius: 3px;
       font-size: 14px;
     }
+    .review-item .review-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-bottom: 6px;
+    }
+    .review-item .review-badge.official { background: var(--correct-bg); color: var(--correct); }
+    .review-item .review-badge.new { background: var(--amber-bg); color: var(--amber); }
     .review-item .q {
       font-family: 'Fraunces', serif;
       font-size: 15px;
@@ -478,10 +460,7 @@
     .review-item .your { color: var(--wrong); margin-bottom: 2px; }
     .review-item .correct-ans { color: var(--correct); font-weight: 600; }
 
-    .actions-row {
-      display: flex;
-      gap: 10px;
-    }
+    .actions-row { display: flex; gap: 10px; }
     .actions-row .btn-primary { flex: 1; }
 
     footer {
@@ -498,8 +477,10 @@
       .wrap { padding: 20px 16px 60px; }
       .masthead { margin-bottom: 24px; }
       .options { padding: 20px; }
-      .option-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .option-row { flex-direction: column; align-items: flex-start; gap: 10px; }
       .keyboard-hint { display: none; }
+      .feedback { flex-direction: column; align-items: stretch; }
+      .next-btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -510,22 +491,30 @@
       <div class="meta">Priprema za ispit</div>
     </header>
 
-    <!-- START SCREEN -->
     <section id="start-screen" class="screen">
       <div class="hero">
-        <div class="eyebrow">Medicinska instrumentacija</div>
+        <div class="eyebrow">Tehnologija u medicini</div>
         <h1>Provjeri <em>znanje</em> prije ispita.</h1>
-        <p class="lede">40 pitanja iz arhiva međuispita (2017., 2021./22., 2025.) u obliku višestrukog izbora. Trenutna povratna informacija, pregled pogrešaka na kraju.</p>
+        <p class="lede">140 pitanja: 40 iz arhiva međuispita (službena) i 100 generiranih iz predavanja 2024./25. (nova — za dodatnu vježbu). Svako pitanje je jasno označeno tako da znaš što rješavaš.</p>
       </div>
 
       <div class="options">
         <h2>Postavke</h2>
         <div class="option-row">
+          <label>Izvor pitanja</label>
+          <div class="chips" id="source-chips">
+            <button class="chip active" data-source="all">Sva (140)</button>
+            <button class="chip" data-source="official">Službena (40)</button>
+            <button class="chip" data-source="new">Nova (100)</button>
+          </div>
+        </div>
+        <div class="option-row">
           <label>Broj pitanja</label>
           <div class="chips" id="count-chips">
             <button class="chip" data-count="10">10</button>
             <button class="chip" data-count="20">20</button>
-            <button class="chip active" data-count="all">Sva (40)</button>
+            <button class="chip" data-count="50">50</button>
+            <button class="chip active" data-count="all" id="count-all-chip">Sva (140)</button>
           </div>
         </div>
         <div class="option-row">
@@ -544,7 +533,6 @@
       </button>
     </section>
 
-    <!-- QUIZ SCREEN -->
     <section id="quiz-screen" class="screen hidden">
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
       <div class="progress-info">
@@ -552,11 +540,11 @@
         <span class="score" id="score-text">0 točno</span>
       </div>
 
+      <div id="source-badge-container"></div>
       <span class="question-num" id="question-num">Pitanje 01</span>
       <h2 class="question" id="question-text"></h2>
 
       <div class="answers" id="answers-container"></div>
-
       <div id="feedback-container"></div>
 
       <div class="keyboard-hint">
@@ -564,7 +552,6 @@
       </div>
     </section>
 
-    <!-- RESULTS SCREEN -->
     <section id="results-screen" class="screen hidden">
       <div class="results-card">
         <div class="eyebrow">Gotovo</div>
@@ -591,234 +578,193 @@
     </section>
 
     <footer>
-      Izvor: arhiva međuispita · Radi vježbe
+      Izvori: arhiva međuispita 2017., 2021./22., 2025. · Predavanja TUM 2024./25. · Za vježbu.
     </footer>
   </div>
 
   <script>
-    // ========================================
-    // PITANJA — 40 pitanja iz arhive
-    // ========================================
-    const ALL_QUESTIONS = [
-      {
-        q: "Najzastupljeniji element u ljudskom tijelu je?",
-        a: ["Vodik (H)", "Kisik (O)", "Ugljik (C)", "Dušik (N)"],
-        correct: 0
-      },
-      {
-        q: "U ljudskom tijelu omjer tekućine i tkiva je (tekućina : tkivo)?",
-        a: ["1:1", "2:1", "1:2", "3:1"],
-        correct: 1
-      },
-      {
-        q: "Koji je odnos koncentracija iona u stanici?",
-        a: ["Na⁺ više vani, K⁺ više unutra", "Na⁺ više unutra, K⁺ više vani", "Jednake koncentracije svih iona", "Ca²⁺ više unutra, Mg²⁺ više vani"],
-        correct: 0
-      },
-      {
-        q: "Koji je mehanizam zaslužan za povratak membranskog potencijala u početno stanje?",
-        a: ["Pasivna difuzija", "Na-K pumpa", "Osmoza", "Aktivni kotransport Ca-Mg"],
-        correct: 1
-      },
-      {
-        q: "Vrijeme kada se ponovno mogu stvarati akcijski potencijali, ali uz veći intenzitet podražaja, naziva se?",
-        a: ["Apsolutno refraktorno vrijeme", "Relativno refraktorno vrijeme", "Hiperpolarizacija", "Repolarizacija"],
-        correct: 1
-      },
-      {
-        q: "Nelinearan odnos kod osjeta vida i sluha prikazuje se kao?",
-        a: ["Linearan", "Eksponencijalan", "Logaritamski", "Kvadratni"],
-        correct: 2
-      },
-      {
-        q: "Potencijal mirovanja živčanih i mišićnih stanica iznosi?",
-        a: ["0 mV", "-40 do -50 mV", "-70 do -90 mV", "+30 do +40 mV"],
-        correct: 2
-      },
-      {
-        q: "Tipično trajanje QRS kompleksa iznosi?",
-        a: ["0.01 – 0.05 s", "0.06 – 0.1 s (80 – 120 ms)", "0.2 – 0.3 s", "0.4 – 0.6 s"],
-        correct: 1
-      },
-      {
-        q: "Faktor potiskivanja zajedničkog signala (CMRR) definira se kao?",
-        a: ["Omjer pojačanja zajedničkog i diferencijalnog signala", "Omjer pojačanja diferencijalnog (korisnog) signala i zajedničkog signala (smetnje)", "Razlika amplituda ulaznog i izlaznog signala", "Omjer izlaznog i ulaznog napona"],
-        correct: 1
-      },
-      {
-        q: "Mitralni zalistak nalazi se?",
-        a: ["Između desnog atrija i desne klijetke", "Između lijevog atrija i lijeve klijetke", "Na izlazu iz aorte", "Između plućne arterije i desne klijetke"],
-        correct: 1
-      },
-      {
-        q: "Pročišćena krv opskrbljena kisikom iz pluća putem plućnih vena dolazi u?",
-        a: ["Desni atrij", "Lijevi atrij", "Desnu klijetku", "Lijevu klijetku"],
-        correct: 1
-      },
-      {
-        q: "Što predstavlja respiracijski volumen (RV)?",
-        a: ["Volumen zraka koji ostaje u plućima nakon maksimalnog izdisaja", "Volumen zraka koji se izmjenjuje pri normalnom disanju", "Maksimalni volumen zraka koji se može udahnuti", "Ukupni kapacitet pluća"],
-        correct: 1
-      },
-      {
-        q: "U kojoj regiji mozga je smješten centar za vid?",
-        a: ["Frontalnoj", "Parijetalnoj", "Temporalnoj", "Okcipitalnoj"],
-        correct: 3
-      },
-      {
-        q: "Što je karakteristično za α-valove?",
-        a: ["Frekvencija 14 – 30 Hz, dominiraju u frontalnoj regiji", "Frekvencija 8 – 13 Hz, amplituda do 50 μV, dominiraju u okcipitalnoj regiji", "Frekvencija 4 – 7 Hz, javljaju se u snu", "Frekvencija 0.5 – 3 Hz, prisutni u dubokom snu"],
-        correct: 1
-      },
-      {
-        q: "Koje vrste valova javljaju se u mozgu?",
-        a: ["α, β, γ, ω", "α, β, δ, θ", "P, Q, R, S", "X, Y, Z, W"],
-        correct: 1
-      },
-      {
-        q: "Na crtežu sarkomere, linija koja omeđuje sarkomeru označena je kao?",
-        a: ["A-membrana", "Z-membrana", "M-linija", "Aktinska linija"],
-        correct: 1
-      },
-      {
-        q: "Tipična amplituda EMG signala je u rasponu?",
-        a: ["1 – 10 μV", "10 – 100 μV", "0.1 – 5 mV", "10 – 50 mV"],
-        correct: 2
-      },
-      {
-        q: "Izvedba umjetnog vida gdje se elektrode postavljaju na unutrašnju stranu retine naziva se?",
-        a: ["Subretinal", "Epiretinal", "Suprachoroidal", "Transcortical"],
-        correct: 1
-      },
-      {
-        q: "Tipične vrijednosti pojačanja instrumentacijskih pojačala su?",
-        a: ["10 – 20 dB", "40 – 60 dB", "100 – 120 dB", "200 – 300 dB"],
-        correct: 2
-      },
-      {
-        q: "Frekvencija glatkog pokreta mišića iznosi?",
-        a: ["5 – 10 Hz", "20 – 40 Hz", "60 – 80 Hz", "200 – 500 Hz"],
-        correct: 2
-      },
-      {
-        q: "Koji je red veličine broja senzora u implantu umjetne retine?",
-        a: ["6", "60", "600", "6000"],
-        correct: 1
-      },
-      {
-        q: "Koji od navedenih uređaja zahtijeva da tijelo pacijenta bude u zabrtvljenom kućištu?",
-        a: ["Respirator s pozitivnim tlakom", "Respirator s negativnim tlakom", "CPAP uređaj", "EKG monitor"],
-        correct: 1
-      },
-      {
-        q: "Načelo rada pulsnog oksimetra je?",
-        a: ["Mjerenje električne provodljivosti tkiva", "Usporedba crvene i infracrvene svjetlosti u tkivu", "Mjerenje temperature kože", "Ultrazvučna analiza krvi"],
-        correct: 1
-      },
-      {
-        q: "Tipične značajke stanične membrane (debljina, specifični kapacitet, dielektrična konstanta)?",
-        a: ["1 nm; 5 μF/cm²; 80", "10 nm; 0.5 – 1 μF/cm²; 5", "100 nm; 10 μF/cm²; 50", "1 μm; 0.1 μF/cm²; 1"],
-        correct: 1
-      },
-      {
-        q: "Koje su karakteristike β-valova?",
-        a: ["0.5 – 3 Hz, do 100 μV, u dubokom snu", "4 – 7 Hz, 10 – 30 μV, javljaju se kod djece", "8 – 13 Hz, do 50 μV, u okcipitalnoj regiji", "14 – 30 Hz (do 50 Hz), do 20 μV, u frontalnim i parijetalnim regijama"],
-        correct: 3
-      },
-      {
-        q: "Ishodište neke nove zarazne bolesti naziva se traženjem?",
-        a: ["Patogena", "Prvog simptoma", "Nultog pacijenta", "Inkubacijskog razdoblja"],
-        correct: 2
-      },
-      {
-        q: "Svojstva površinskog EMG signala su?",
-        a: ["Amplituda 1 – 5 μV, 1 – 10 Hz", "Amplituda 100 μV do 5 mV, 10 – 500 Hz, umor pomiče spektar prema nižim frekvencijama", "Amplituda 10 – 100 mV, 500 – 1000 Hz", "Amplituda 0.1 μV, DC signal"],
-        correct: 1
-      },
-      {
-        q: "Nastanak i širenje akcijskog potencijala posljedica je?",
-        a: ["Mehaničkog tlaka na membranu", "Brze promjene polarnosti membrane mijenjanjem njene propusnosti za Na⁺ i K⁺ u pobuđenoj stanici", "Kemijske reakcije proteina", "Termalnog gradijenta"],
-        correct: 1
-      },
-      {
-        q: "Što vrijedi za deterministički model (za razliku od stohastičkog)?",
-        a: ["Izlaz je potpuno slučajan", "Izlaz je određen definiranim ulazima i njihovim odnosima", "Ulazi su slučajne varijable", "Model koristi vjerojatnosne distribucije"],
-        correct: 1
-      },
-      {
-        q: "Hodgkin-Huxleyev model opisuje?",
-        a: ["Strukturu DNA", "Teoriju nastanka i širenja akcijskog potencijala", "Funkciju srca", "Model disanja"],
-        correct: 1
-      },
-      {
-        q: "In vitro modeli su modeli u kojima se?",
-        a: ["Eksperimentira na živim organizmima (in vivo)", "Izolira specifični živi proces i reproducira u laboratorijskim uvjetima", "Koriste isključivo matematičke simulacije", "Promatraju pacijenti u bolnici"],
-        correct: 1
-      },
-      {
-        q: "Ex vivo modeli su modeli u kojima se?",
-        a: ["Koriste samo matematičke jednadžbe", "Eksperimentira na stanicama, tkivima ili organima izvađenim iz organizma, uz minimalnu izmjenu prirodnih uvjeta", "Testira na živom pacijentu", "Simulira računalno"],
-        correct: 1
-      },
-      {
-        q: "Što je anizotropnost?",
-        a: ["Ista svojstva u svim smjerovima", "Različita svojstva u različitim smjerovima, tipično uzduž stanice-vlakna", "Promjena svojstava tijekom vremena", "Neusmjereni prijenos signala"],
-        correct: 1
-      },
-      {
-        q: "Raspon frekvencijskog signala kirurškog noža iznosi?",
-        a: ["50 – 100 Hz", "1 – 10 kHz", "300 kHz do 5 MHz", "1 – 10 GHz"],
-        correct: 2
-      },
-      {
-        q: "Koje su vrste prijenosa kroz staničnu membranu?",
-        a: ["Samo difuzija", "Difuzija, osmoza i aktivni prijenos", "Isključivo aktivni prijenos", "Mehanička abrazija"],
-        correct: 1
-      },
-      {
-        q: "Koji je algoritam za detekciju QRS-a na EKG-u?",
-        a: ["Fourierov algoritam", "Pan-Tompkins", "Karhunen-Loève", "Gaussov filtar"],
-        correct: 1
-      },
-      {
-        q: "Koji su normalni tlakovi sistole i dijastole?",
-        a: ["80/60 mmHg", "100/70 mmHg", "120/80 mmHg", "160/100 mmHg"],
-        correct: 2
-      },
-      {
-        q: "Koji je električni model elektrode (osnovna konfiguracija)?",
-        a: ["Samo kondenzator", "Samo otpornik", "U paraleli kondenzator i otpornik", "Serijski spojeni induktori"],
-        correct: 2
-      },
-      {
-        q: "Kakav je odnos frekvencije impulsa i intenziteta podražaja kod osjetila velike dinamike (vid, sluh)?",
-        a: ["Linearno proporcionalan", "Eksponencijalno proporcionalan", "Logaritamski proporcionalan", "Obrnuto proporcionalan"],
-        correct: 2
-      },
-      {
-        q: "Koja tvrdnja o koncentracijama iona je točna?",
-        a: ["Jednake koncentracije unutar i izvan stanice", "K⁺ veća UNUTAR stanice, Na⁺ veća IZVAN stanice", "K⁺ veća IZVAN stanice, Na⁺ veća UNUTAR stanice", "Ovisi o trenutku srčanog ciklusa"],
-        correct: 1
-      }
+    // source: "official" = iz arhiva međuispita (40)
+    // source: "new"      = generirano iz predavanja 2024./25. za dodatnu vježbu (100)
+
+    const OFFICIAL_QUESTIONS = [
+      { source: "official", q: "Najzastupljeniji element u ljudskom tijelu je?", a: ["Vodik (H)", "Kisik (O)", "Ugljik (C)", "Dušik (N)"], correct: 0 },
+      { source: "official", q: "U ljudskom tijelu omjer tekućine i tkiva je (tekućina : tkivo)?", a: ["1:1", "2:1", "1:2", "3:1"], correct: 1 },
+      { source: "official", q: "Koji je odnos koncentracija iona u stanici?", a: ["Na⁺ više vani, K⁺ više unutra", "Na⁺ više unutra, K⁺ više vani", "Jednake koncentracije svih iona", "Ca²⁺ više unutra, Mg²⁺ više vani"], correct: 0 },
+      { source: "official", q: "Koji je mehanizam zaslužan za povratak membranskog potencijala u početno stanje?", a: ["Pasivna difuzija", "Na-K pumpa", "Osmoza", "Aktivni kotransport Ca-Mg"], correct: 1 },
+      { source: "official", q: "Vrijeme kada se ponovno mogu stvarati akcijski potencijali, ali uz veći intenzitet podražaja, naziva se?", a: ["Apsolutno refraktorno vrijeme", "Relativno refraktorno vrijeme", "Hiperpolarizacija", "Repolarizacija"], correct: 1 },
+      { source: "official", q: "Nelinearan odnos kod osjeta vida i sluha prikazuje se kao?", a: ["Linearan", "Eksponencijalan", "Logaritamski", "Kvadratni"], correct: 2 },
+      { source: "official", q: "Potencijal mirovanja živčanih i mišićnih stanica iznosi?", a: ["0 mV", "-40 do -50 mV", "-70 do -90 mV", "+30 do +40 mV"], correct: 2 },
+      { source: "official", q: "Tipično trajanje QRS kompleksa iznosi?", a: ["0.01 – 0.05 s", "0.06 – 0.1 s (80 – 120 ms)", "0.2 – 0.3 s", "0.4 – 0.6 s"], correct: 1 },
+      { source: "official", q: "Faktor potiskivanja zajedničkog signala (CMRR) definira se kao?", a: ["Omjer pojačanja zajedničkog i diferencijalnog signala", "Omjer pojačanja diferencijalnog (korisnog) signala i zajedničkog signala (smetnje)", "Razlika amplituda ulaznog i izlaznog signala", "Omjer izlaznog i ulaznog napona"], correct: 1 },
+      { source: "official", q: "Mitralni zalistak nalazi se?", a: ["Između desnog atrija i desne klijetke", "Između lijevog atrija i lijeve klijetke", "Na izlazu iz aorte", "Između plućne arterije i desne klijetke"], correct: 1 },
+      { source: "official", q: "Pročišćena krv opskrbljena kisikom iz pluća putem plućnih vena dolazi u?", a: ["Desni atrij", "Lijevi atrij", "Desnu klijetku", "Lijevu klijetku"], correct: 1 },
+      { source: "official", q: "Što predstavlja respiracijski volumen (RV)?", a: ["Volumen zraka koji ostaje u plućima nakon maksimalnog izdisaja", "Volumen zraka koji se izmjenjuje pri normalnom disanju", "Maksimalni volumen zraka koji se može udahnuti", "Ukupni kapacitet pluća"], correct: 1 },
+      { source: "official", q: "U kojoj regiji mozga je smješten centar za vid?", a: ["Frontalnoj", "Parijetalnoj", "Temporalnoj", "Okcipitalnoj"], correct: 3 },
+      { source: "official", q: "Što je karakteristično za α-valove?", a: ["Frekvencija 14 – 30 Hz, dominiraju u frontalnoj regiji", "Frekvencija 8 – 13 Hz, amplituda do 50 μV, dominiraju u okcipitalnoj regiji", "Frekvencija 4 – 7 Hz, javljaju se u snu", "Frekvencija 0.5 – 3 Hz, prisutni u dubokom snu"], correct: 1 },
+      { source: "official", q: "Koje vrste valova javljaju se u mozgu?", a: ["α, β, γ, ω", "α, β, δ, θ", "P, Q, R, S", "X, Y, Z, W"], correct: 1 },
+      { source: "official", q: "Na crtežu sarkomere, linija koja omeđuje sarkomeru označena je kao?", a: ["A-membrana", "Z-membrana", "M-linija", "Aktinska linija"], correct: 1 },
+      { source: "official", q: "Tipična amplituda EMG signala je u rasponu?", a: ["1 – 10 μV", "10 – 100 μV", "0.1 – 5 mV", "10 – 50 mV"], correct: 2 },
+      { source: "official", q: "Izvedba umjetnog vida gdje se elektrode postavljaju na unutrašnju stranu retine naziva se?", a: ["Subretinal", "Epiretinal", "Suprachoroidal", "Transcortical"], correct: 1 },
+      { source: "official", q: "Tipične vrijednosti pojačanja instrumentacijskih pojačala su?", a: ["10 – 20 dB", "40 – 60 dB", "100 – 120 dB", "200 – 300 dB"], correct: 2 },
+      { source: "official", q: "Frekvencija glatkog pokreta mišića iznosi?", a: ["5 – 10 Hz", "20 – 40 Hz", "60 – 80 Hz", "200 – 500 Hz"], correct: 2 },
+      { source: "official", q: "Koji je red veličine broja senzora u implantu umjetne retine?", a: ["6", "60", "600", "6000"], correct: 1 },
+      { source: "official", q: "Koji od navedenih uređaja zahtijeva da tijelo pacijenta bude u zabrtvljenom kućištu?", a: ["Respirator s pozitivnim tlakom", "Respirator s negativnim tlakom", "CPAP uređaj", "EKG monitor"], correct: 1 },
+      { source: "official", q: "Načelo rada pulsnog oksimetra je?", a: ["Mjerenje električne provodljivosti tkiva", "Usporedba crvene i infracrvene svjetlosti u tkivu", "Mjerenje temperature kože", "Ultrazvučna analiza krvi"], correct: 1 },
+      { source: "official", q: "Tipične značajke stanične membrane (debljina, specifični kapacitet, dielektrična konstanta)?", a: ["1 nm; 5 μF/cm²; 80", "10 nm; 0.5 – 1 μF/cm²; 5", "100 nm; 10 μF/cm²; 50", "1 μm; 0.1 μF/cm²; 1"], correct: 1 },
+      { source: "official", q: "Koje su karakteristike β-valova?", a: ["0.5 – 3 Hz, do 100 μV, u dubokom snu", "4 – 7 Hz, 10 – 30 μV, javljaju se kod djece", "8 – 13 Hz, do 50 μV, u okcipitalnoj regiji", "14 – 30 Hz (do 50 Hz), do 20 μV, u frontalnim i parijetalnim regijama"], correct: 3 },
+      { source: "official", q: "Ishodište neke nove zarazne bolesti naziva se traženjem?", a: ["Patogena", "Prvog simptoma", "Nultog pacijenta", "Inkubacijskog razdoblja"], correct: 2 },
+      { source: "official", q: "Svojstva površinskog EMG signala su?", a: ["Amplituda 1 – 5 μV, 1 – 10 Hz", "Amplituda 100 μV do 5 mV, 10 – 500 Hz, umor pomiče spektar prema nižim frekvencijama", "Amplituda 10 – 100 mV, 500 – 1000 Hz", "Amplituda 0.1 μV, DC signal"], correct: 1 },
+      { source: "official", q: "Nastanak i širenje akcijskog potencijala posljedica je?", a: ["Mehaničkog tlaka na membranu", "Brze promjene polarnosti membrane mijenjanjem njene propusnosti za Na⁺ i K⁺ u pobuđenoj stanici", "Kemijske reakcije proteina", "Termalnog gradijenta"], correct: 1 },
+      { source: "official", q: "Što vrijedi za deterministički model (za razliku od stohastičkog)?", a: ["Izlaz je potpuno slučajan", "Izlaz je određen definiranim ulazima i njihovim odnosima", "Ulazi su slučajne varijable", "Model koristi vjerojatnosne distribucije"], correct: 1 },
+      { source: "official", q: "Hodgkin-Huxleyev model opisuje?", a: ["Strukturu DNA", "Teoriju nastanka i širenja akcijskog potencijala", "Funkciju srca", "Model disanja"], correct: 1 },
+      { source: "official", q: "In vitro modeli su modeli u kojima se?", a: ["Eksperimentira na živim organizmima (in vivo)", "Izolira specifični živi proces i reproducira u laboratorijskim uvjetima", "Koriste isključivo matematičke simulacije", "Promatraju pacijenti u bolnici"], correct: 1 },
+      { source: "official", q: "Ex vivo modeli su modeli u kojima se?", a: ["Koriste samo matematičke jednadžbe", "Eksperimentira na stanicama, tkivima ili organima izvađenim iz organizma, uz minimalnu izmjenu prirodnih uvjeta", "Testira na živom pacijentu", "Simulira računalno"], correct: 1 },
+      { source: "official", q: "Što je anizotropnost?", a: ["Ista svojstva u svim smjerovima", "Različita svojstva u različitim smjerovima, tipično uzduž stanice-vlakna", "Promjena svojstava tijekom vremena", "Neusmjereni prijenos signala"], correct: 1 },
+      { source: "official", q: "Raspon frekvencijskog signala kirurškog noža iznosi?", a: ["50 – 100 Hz", "1 – 10 kHz", "300 kHz do 5 MHz", "1 – 10 GHz"], correct: 2 },
+      { source: "official", q: "Koje su vrste prijenosa kroz staničnu membranu?", a: ["Samo difuzija", "Difuzija, osmoza i aktivni prijenos", "Isključivo aktivni prijenos", "Mehanička abrazija"], correct: 1 },
+      { source: "official", q: "Koji je algoritam za detekciju QRS-a na EKG-u?", a: ["Fourierov algoritam", "Pan-Tompkins", "Karhunen-Loève", "Gaussov filtar"], correct: 1 },
+      { source: "official", q: "Koji su normalni tlakovi sistole i dijastole?", a: ["80/60 mmHg", "100/70 mmHg", "120/80 mmHg", "160/100 mmHg"], correct: 2 },
+      { source: "official", q: "Koji je električni model elektrode (osnovna konfiguracija)?", a: ["Samo kondenzator", "Samo otpornik", "U paraleli kondenzator i otpornik", "Serijski spojeni induktori"], correct: 2 },
+      { source: "official", q: "Kakav je odnos frekvencije impulsa i intenziteta podražaja kod osjetila velike dinamike (vid, sluh)?", a: ["Linearno proporcionalan", "Eksponencijalno proporcionalan", "Logaritamski proporcionalan", "Obrnuto proporcionalan"], correct: 2 },
+      { source: "official", q: "Koja tvrdnja o koncentracijama iona je točna?", a: ["Jednake koncentracije unutar i izvan stanice", "K⁺ veća UNUTAR stanice, Na⁺ veća IZVAN stanice", "K⁺ veća IZVAN stanice, Na⁺ veća UNUTAR stanice", "Ovisi o trenutku srčanog ciklusa"], correct: 1 }
     ];
 
-    // ========================================
-    // STATE
-    // ========================================
+    const NEW_QUESTIONS = [
+      // A. Modeliranje (1-10)
+      { source: "new", q: "Što je model u kontekstu biomedicinskog modeliranja?", a: ["Potpuna kopija sustava", "Reprezentacija strukture i rada sustava, jednostavnija od samog sustava", "Samo matematička jednadžba", "Fizički eksperiment na pacijentu"], correct: 1 },
+      { source: "new", q: "Koliko vrsta modela razlikujemo u biomedicinskim znanostima (life sciences)?", a: ["2 (in vivo i in vitro)", "3 (in vivo, in vitro, in silico)", "4 (in vivo, ex vivo, in vitro, in silico)", "5 (uz prethodne još i ex silico)"], correct: 2 },
+      { source: "new", q: "In silico modeli su?", a: ["Modeli u epruvetama", "Modeli izvedeni u računalu ili uporabom računalnih simulacija", "Eksperimenti na organima izvađenim iz tijela", "Pokusi na živim organizmima"], correct: 1 },
+      { source: "new", q: "Približno koji postotak Nobelovih nagrada u 20. stoljeću proizašao je iz rezultata na pokusnim životinjama?", a: ["25 %", "50 %", "75 %", "95 %"], correct: 2 },
+      { source: "new", q: "Što označava princip 3R u pokusima na životinjama?", a: ["Research, Review, Report", "Replacement, Reduction, Refinement", "Random, Regular, Repeatable", "Read, Reply, Respond"], correct: 1 },
+      { source: "new", q: "Statički modeli opisuju sustave?", a: ["U stacionarnom stanju", "S vremenski promjenjivim varijablama", "Sa slučajnim varijablama", "Koji su uvijek nelinearni"], correct: 0 },
+      { source: "new", q: "Po čemu se stohastički model razlikuje od determinističkog?", a: ["Nema ulazne varijable", "Sadrži barem jednu slučajnu varijablu", "Uvijek je linearan", "Koristi samo cjelobrojne vrijednosti"], correct: 1 },
+      { source: "new", q: "Koju tehniku validacije modela spominju predavanja?", a: ["Anketiranje korisnika", "Ignoriranje izlaznih podataka", "Simuliranje modela poznatim ulaznim signalima i usporedba izlaza s izlazom stvarnog sustava", "Samo usmenu provjeru"], correct: 2 },
+      { source: "new", q: "Koje godine su Hodgkin i Huxley dobili Nobelovu nagradu?", a: ["1945.", "1952.", "1963.", "1975."], correct: 2 },
+      { source: "new", q: "Na koje komponente je u Hodgkin-Huxleyjevom modelu razdijeljena ionska struja kroz membranu?", a: ["Samo struja natrija", "I_K, I_Na i struja gubitaka (I_l)", "Samo kapacitivna struja", "Struje kalcija i magnezija"], correct: 1 },
+
+      // B. Mozak i SŽS (11-20)
+      { source: "new", q: "Lijeva i desna hemisfera velikog mozga upravljaju?", a: ["Istom stranom tijela", "Suprotnim stranama tijela", "Samo gornjim dijelom tijela", "Samo unutrašnjim organima"], correct: 1 },
+      { source: "new", q: "Koja je primarna funkcija parijetalnog (tjemenog) režnja?", a: ["Primarni motorički korteks", "Primarni somatosenzorički korteks (dodir, položaj zgloba)", "Vidna obrada", "Razumijevanje govora"], correct: 1 },
+      { source: "new", q: "Koje su funkcije temporalnog (sljepoočnog) režnja?", a: ["Primarni motorički korteks", "Primarni vidni korteks", "Apstraktno mišljenje, pamćenje, sluh, razumijevanje govora, emocije", "Regulacija krvnog tlaka"], correct: 2 },
+      { source: "new", q: "Što predstavlja homunculus u neuroanatomiji?", a: ["Malog čovječuljka u srcu", "Prikaz gdje je veličina područja proporcionalna složenosti/značaju senzornih ili motoričkih funkcija", "Dio kralježnice", "Staničnu organelu"], correct: 1 },
+      { source: "new", q: "Mali mozak (cerebellum) zadužen je za?", a: ["Proizvodnju hormona rasta", "Koordinaciju motoričkih akcija, ravnotežu i glatkoću kretnji", "Dugoročno pamćenje", "Regulaciju tjelesne temperature"], correct: 1 },
+      { source: "new", q: "Talamus u međumozgu funkcionira kao?", a: ["Glavno mjesto za pamćenje", "Relejna stanica za senzoričke signale prema moždanoj kori", "Središte za disanje", "Endokrina žlijezda"], correct: 1 },
+      { source: "new", q: "Za što je primarno zadužen hipotalamus?", a: ["Samo regulaciju tjelesne temperature", "Osnovne homeostatske mehanizme: temperatura, tlak, apetit, ravnoteža soli i vode, endokrino lučenje", "Samo vidnu obradu", "Stvaranje krvnih stanica"], correct: 1 },
+      { source: "new", q: "Produljena moždina (medulla oblongata) sadrži centre za?", a: ["Pamćenje i učenje", "Vid i sluh", "Respiraciju, gutanje, kihanje, kašljanje, povraćanje", "Fina motorička gibanja"], correct: 2 },
+      { source: "new", q: "Što su aferentna vlakna perifernog živčanog sustava?", a: ["Motorička vlakna koja prenose naredbe za kontrakciju", "Senzorička vlakna koja prenose informaciju od osjetila prema leđnoj moždini ili mozgu", "Hormonalna vlakna", "Vlakna glatkog mišićja"], correct: 1 },
+      { source: "new", q: "Kada je simpatički živčani sustav najaktivniji?", a: ["Tijekom mirnog spavanja", "Tijekom reakcija poput straha i tjeskobe koje troše tjelesne zalihe energije", "Samo tijekom probave", "Samo pri niskoj temperaturi okoline"], correct: 1 },
+
+      // C. EEG (21-30)
+      { source: "new", q: "Što je EEG?", a: ["Mjerenje srčane aktivnosti", "Neinvazivna metoda snimanja električne aktivnosti mozga elektrodama na površini glave", "Invazivna metoda s iglama u mozgu", "Magnetsko snimanje mozga"], correct: 1 },
+      { source: "new", q: "Koji sustav se standardno koristi za smještaj EEG elektroda?", a: ["Sustav 5/10", "Sustav 10/20", "Sustav 20/40", "Sustav 50/50"], correct: 1 },
+      { source: "new", q: "Koje su referentne točke za sustav 10/20?", a: ["Čelo i brada", "Nasion i inion, lijeva i desna preaurikularna točka (tragus)", "Samo vrh lubanje", "Samo oči"], correct: 1 },
+      { source: "new", q: "Kada se tipično pojavljuju α-valovi?", a: ["Pri intenzivnom razmišljanju", "U budnom, opuštenom stanju sa zatvorenim očima (ne razmišlja se koncentrirano)", "Samo tijekom dubokog sna", "Tijekom napornog tjelovježbe"], correct: 1 },
+      { source: "new", q: "Koja je frekvencija θ-valova?", a: ["0.5 – 3 Hz", "4 – 7 Hz", "8 – 13 Hz", "14 – 30 Hz"], correct: 1 },
+      { source: "new", q: "Kada se pojavljuju δ-valovi?", a: ["Kod budnih ljudi pri razmišljanju", "U dubokom snu, kod djece i kod težih bolesti mozga", "Samo pri tjelesnoj aktivnosti", "Kod slušnih iluzija"], correct: 1 },
+      { source: "new", q: "Koja je frekvencija δ-valova?", a: ["0.5 – 3.5 Hz", "4 – 7 Hz", "8 – 13 Hz", "14 – 30 Hz"], correct: 0 },
+      { source: "new", q: "Tipična amplituda δ-valova iznosi?", a: ["5 – 10 μV", "60 – 100 μV", "500 μV", "1 – 5 mV"], correct: 1 },
+      { source: "new", q: "Što se dogodi s α-ritmom kada ispitanik otvori oči?", a: ["Ništa, ostaje isti", "α-ritam se blokira i pojavi se β-ritam", "Trenutno prelazi u δ-ritam", "Pojača se za 10 puta"], correct: 1 },
+      { source: "new", q: "Što je BCI (Brain-Computer Interface)?", a: ["Metoda snimanja tomografije", "Alternativni način komunikacije čovjeka s računalom, neovisan o normalnim neuromišićnim putovima", "Softver za EKG dijagnostiku", "Vrsta slušnog pomagala"], correct: 1 },
+
+      // D. Koštani i mišićni sustav (31-40)
+      { source: "new", q: "Koliko kostiju tipično ima kostur odraslog čovjeka?", a: ["100 – 150", "160 – 200", "206 – 213", "250 – 300"], correct: 2 },
+      { source: "new", q: "Koji su rasponi pulsirajućeg elektromagnetskog polja (PEMFs) kod magnetoterapije?", a: ["0.1 – 2 mT, 15 – 75 Hz", "1 – 10 T, 1 – 10 Hz", "10 μT, 1 – 10 kHz", "100 mT, 1 MHz"], correct: 0 },
+      { source: "new", q: "Koja su tri tipa mišića?", a: ["Kratki, srednji i dugi", "Glatki, srčani i poprečno-prugasti (skeletni)", "Brzi, spori i srednji", "Vanjski, unutarnji i mješoviti"], correct: 1 },
+      { source: "new", q: "Debeli filamenti u sarkomeri građeni su od proteina?", a: ["Aktina", "Miozina", "Troponina", "Tropomiozina"], correct: 1 },
+      { source: "new", q: "Tipična duljina sarkomere (segmenta mišićnog vlakanca između Z-membrana) iznosi?", a: ["0.25 μm", "2.5 μm", "25 μm", "250 μm"], correct: 1 },
+      { source: "new", q: "Kolika je brzina provodljivosti depolarizacije uzduž mišićnog vlakna?", a: ["0.1 – 0.5 m/s", "2 – 6 m/s", "20 – 60 m/s", "200 – 600 m/s"], correct: 1 },
+      { source: "new", q: "Koja su „crvena” mišićna vlakna (tip I)?", a: ["Brza glikolitička (FG, tip IIB)", "Spora oksidacijska (SO)", "Srčana vlakna", "Glatka vlakna"], correct: 1 },
+      { source: "new", q: "Što je motorička jedinica?", a: ["Grupa mišića koji rade zajedno", "Jedna motorička živčana stanica i sva mišićna vlakna koja ona podražuje", "Jedno mišićno vlakno", "Neuromuskularna sinapsa"], correct: 1 },
+      { source: "new", q: "Kolika je neuromuskularna sinaptička pukotina?", a: ["2 – 5 nm", "10 – 20 nm", "60 – 100 nm", "500 – 1000 nm"], correct: 2 },
+      { source: "new", q: "Koliko vremena nakon lučenja acetilkolina u sinapsi luči se kolinesteraza koja ga razgrađuje?", a: ["0.02 ms", "2 ms", "200 ms", "2 s"], correct: 1 },
+
+      // E. Srce i krvotok (41-50)
+      { source: "new", q: "Prosječna masa odraslog srca iznosi?", a: ["100 g", "300 g", "1 kg", "50 g"], correct: 1 },
+      { source: "new", q: "Prosječna frekvencija otkucaja srca u mirovanju je?", a: ["40 bpm", "72 bpm", "120 bpm", "200 bpm"], correct: 1 },
+      { source: "new", q: "Tipičan minutni volumen srca muškarca u mirovanju je?", a: ["1 L", "5 L", "25 L", "40 L"], correct: 1 },
+      { source: "new", q: "Prirodni pacemaker srca je?", a: ["Atrio-ventrikularni (A-V) čvor", "Purkinje vlakna", "Sinus-atrijski (S-A) čvor", "Hisov snop"], correct: 2 },
+      { source: "new", q: "Koji je normalan slijed provođenja impulsa u srcu?", a: ["A-V → S-A → ventrikli", "S-A čvor → A-V čvor → Hisov snop → Purkinje vlakna", "Purkinje → S-A", "Hisov snop → pretklijetke"], correct: 1 },
+      { source: "new", q: "Koliko energije tipično ima udar defibrilatora?", a: ["Do 4 J", "Do 40 J", "Do 400 J", "Do 4000 J"], correct: 2 },
+      { source: "new", q: "Što označava kratica VAD?", a: ["Very Advanced Device", "Ventricular Assist Device („umjetno srce”)", "Vertical Axis Diameter", "Variable Analog Driver"], correct: 1 },
+      { source: "new", q: "ECMO (ECLS) uređaj tipično je certificiran za rad do?", a: ["1 dan", "30 dana", "1 godinu", "10 godina"], correct: 1 },
+      { source: "new", q: "Karakteristika pumpi s kontinuiranim protokom u mehaničkoj cirkulacijskoj potpori?", a: ["Uvijek imaju pulsatilni protok", "Nemaju pulsatilni protok, ali omogućuju minijaturizaciju i manju potrošnju energije", "Ne rade pri minijaturizaciji", "Koriste se samo za vrijeme operacija"], correct: 1 },
+      { source: "new", q: "Što je Total Artificial Heart (TAH)?", a: ["Uređaj koji samo mjeri EKG", "Potpuna zamjena odstranjenog bolesnog srca dvjema povezanim pumpama", "Vanjski defibrilator", "Samo računalna simulacija srca"], correct: 1 },
+
+      // F. Disanje i reanimacija (51-56)
+      { source: "new", q: "Najvažniji mišić inspiracije je?", a: ["Međurebreni mišići", "Dijafragma (ošit)", "Trbušni mišići", "Trapezijus"], correct: 1 },
+      { source: "new", q: "Kako se mijenja tlak u prsištu tijekom inspirija?", a: ["Ostaje stalan", "Dijafragma se steže i pomiče prema dolje → volumen prsišta raste → tlak pada → zrak ulazi u pluća", "Tlak raste pa zrak izlazi", "Dijafragma se ne miče"], correct: 1 },
+      { source: "new", q: "„Željezna pluća” (Drinker i Shaw, 1927.) primjer su?", a: ["Ventilacije pozitivnim tlakom", "Ventilacije negativnim tlakom", "Invazivne ventilacije kroz dušnik", "CPAP uređaja"], correct: 1 },
+      { source: "new", q: "Prema načinu stvaranja inspiracijske sile, mehanička ventilacija se dijeli na?", a: ["Dinamičku i statičku", "Ventilaciju negativnim i pozitivnim tlakom", "Primarnu i sekundarnu", "Manualnu i automatiziranu"], correct: 1 },
+      { source: "new", q: "Što je AED?", a: ["Automatic Electric Display", "Automatic External Defibrillator (automatski vanjski defibrilator)", "Advanced ECG Device", "Annual Emergency Drug"], correct: 1 },
+      { source: "new", q: "Koje su dvije osnovne faze disanja?", a: ["Inspiracija (udisanje) i ekspiracija (izdisanje)", "Proinspiracija i postinspiracija", "Otvaranje i zatvaranje usta", "Puštanje i zadržavanje daha"], correct: 0 },
+
+      // G. Limfni, mokraćni, endokrini, pokrovni (57-67)
+      { source: "new", q: "Koliko otprilike litara limfe dnevno protječe limfnim sustavom?", a: ["200 – 300 mL", "2 – 3 L", "20 – 30 L", "200 L"], correct: 1 },
+      { source: "new", q: "Glavna zadaća limfe je?", a: ["Transport kisika", "Odnošenje proteina i drugih tvari iz međustaničnih prostora (intersticija)", "Stvaranje eritrocita", "Razgradnja masti u želucu"], correct: 1 },
+      { source: "new", q: "Kako se tipično obavlja hemodijaliza kod bolesnika?", a: ["Jednom godišnje", "Jednom tjedno nekoliko minuta", "3 puta tjedno, prosječno 4 sata po seansi", "Kontinuirano 24 sata dnevno"], correct: 2 },
+      { source: "new", q: "Hipofiza je žlijezda koja?", a: ["Regulira samo krvni tlak", "Upravlja radom drugih endokrinih žlijezda", "Stvara samo inzulin", "Nema endokrinu funkciju"], correct: 1 },
+      { source: "new", q: "Najveći organ ljudskog tijela je?", a: ["Jetra", "Srce", "Pluća", "Koža"], correct: 3 },
+      { source: "new", q: "Koji vitamin se u koži proizvodi izlaganjem UV zračenju?", a: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin B12"], correct: 2 },
+      { source: "new", q: "Kada je prva umjetna koža (Integra) uspješno testirana na pacijentu?", a: ["1950.", "1979.", "2000.", "2015."], correct: 1 },
+      { source: "new", q: "Biotinta se sastoji od?", a: ["Samo stanica", "Suspenzije živih stanica i hidrogela koji ih hrani i podržava", "Sintetskih polimera bez stanica", "Samo vode i elektrolita"], correct: 1 },
+      { source: "new", q: "Koja vrsta bioprintera ima manju stopu preživljavanja stanica zbog visokog tlaka pri ispisu?", a: ["Tintni", "Ekstruzijski", "Laserski (LAB)", "Svi imaju istu stopu"], correct: 1 },
+      { source: "new", q: "Endokrine žlijezde su?", a: ["Žlijezde s vanjskim lučenjem (na površinu tijela ili u probavu)", "Žlijezde s unutarnjim lučenjem koje izlučuju hormone u krv ili limfu", "Žlijezde koje proizvode samo znoj", "Mišićne strukture bez lučenja"], correct: 1 },
+      { source: "new", q: "Koja endokrina žlijezda je primarno odgovorna za upravljanje radom drugih endokrinih žlijezda?", a: ["Štitna žlijezda", "Hipofiza", "Timus", "Nadbubrežna žlijezda"], correct: 1 },
+
+      // H. Umjetni vid i pužnica (68-77)
+      { source: "new", q: "Što je fosfen (phosphene)?", a: ["Vrsta osjetilne stanice u mrežnici", "Doživljaj pojave svijetle točke u mozgu izazvan električnom stimulacijom vidnog puta", "Bolest mrežnice", "Kemijski spoj u oku"], correct: 1 },
+      { source: "new", q: "Koje su osnovne izvedbe umjetnog vida?", a: ["Samo epiretinal", "Izvanočna (stimulacija korteksa ili vidnog živca) i unutaročna (epiretinal, subretinal, STS)", "Samo stimulacija vidnog korteksa", "Samo vanjske naočale"], correct: 1 },
+      { source: "new", q: "Kod STS (Suprachoroidal Transretinal Stimulation) izvedbe umjetnog vida, mikroelektrode su implantirane?", a: ["Na unutrašnju stranu retine", "Ispod retine", "U skleru (bjeloočnicu)", "U vidni korteks"], correct: 2 },
+      { source: "new", q: "U kojoj se državi pretežito provode istraživanja STS metode umjetnog vida?", a: ["SAD", "Njemačka", "Japan", "Francuska"], correct: 2 },
+      { source: "new", q: "Koliko elektroda ima sustav Argus II?", a: ["30", "60", "150", "256"], correct: 1 },
+      { source: "new", q: "Koliko elektroda tipično ima umjetna pužnica (kohlearni implant)?", a: ["2 do 4", "12 do 24", "60 do 100", "nekoliko tisuća"], correct: 1 },
+      { source: "new", q: "Vanjski dio umjetne pužnice sadrži?", a: ["Samo bateriju", "Mikrofon, govorni procesor i zavojnicu (odašiljač)", "Samo ugrađene elektrode", "Samo antenu unutar ušne školjke"], correct: 1 },
+      { source: "new", q: "Žuta pjega (fovea centralis) na mrežnici sadrži pretežno?", a: ["Štapiće (za crno-bijeli vid)", "Čunjiće (za vid u boji)", "Bipolarne stanice", "Krvne žile"], correct: 1 },
+      { source: "new", q: "Što je slijepa pjega na mrežnici?", a: ["Mjesto najbolje oštrine vida", "Mjesto izlaska aksona ganglijskih stanica gdje nema fotoreceptora", "Kraj leće oka", "Dio bjeloočnice"], correct: 1 },
+      { source: "new", q: "Koji je okviran broj štapića i čunjića u oku?", a: ["~10⁴ štapića, ~10³ čunjića", "~100·10⁶ štapića, ~3·10⁶ čunjića", "~10⁹ štapića, ~10⁸ čunjića", "~10² štapića, ~10¹ čunjića"], correct: 1 },
+
+      // I. IBC i bežični sustavi (78-87)
+      { source: "new", q: "Koji je tipičan domet IBC (Intrabody Communication) sustava?", a: ["Do 2 m", "Do 100 m", "Do 1 km", "Do 10 km"], correct: 0 },
+      { source: "new", q: "IBC komunikacija koristi kao medij za prijenos signala?", a: ["Zrak", "Ljudsko tijelo", "Optički kabel", "Satelitsku vezu"], correct: 1 },
+      { source: "new", q: "Dva osnovna načina IBC prijenosa signala su?", a: ["Analogni i digitalni", "Kapacitivni i galvanski", "Zvučni i optički", "Magnetski i termalni"], correct: 1 },
+      { source: "new", q: "Na kojoj frekvenciji radi Bluetooth Low Energy prema tablici bežičnih protokola?", a: ["433 MHz", "2.4 GHz", "5 GHz", "13.56 MHz"], correct: 1 },
+      { source: "new", q: "Na kojoj frekvenciji rade NFC i 13.56 MHz RFID?", a: ["2.4 GHz", "13.56 MHz", "915 MHz", "5.8 GHz"], correct: 1 },
+      { source: "new", q: "Zašto se IBC signal tipično bira na frekvenciji f > 1 kHz?", a: ["Da uređaj troši manje", "Da ne interferira s biološkim (bioelektričkim) signalima ispitanika", "Zakonski je tako propisano za sve uređaje", "Zbog veličine antene"], correct: 1 },
+      { source: "new", q: "Kako izgleda galvanski IBC prijenos signala?", a: ["Koriste se 2 elektrode i referentna elektroda (GND)", "Sve četiri elektrode su na tijelu, mjeri se diferencijalni signal, bez zasebne referentne elektrode", "Koristi se antena na tijelu", "Koristi se samo jedan kabel"], correct: 1 },
+      { source: "new", q: "Kako se mijenja vodljivost bioloških tkiva s porastom frekvencije?", a: ["Pada", "Raste", "Ne mijenja se", "Neovisna je o frekvenciji u potpunosti"], correct: 1 },
+      { source: "new", q: "Kakva dielektrična svojstva imaju tkiva s visokim udjelom vode (mišići, koža)?", a: ["Nizak σ i nizak εr", "Visok σ i visok εr", "σ = 0", "Samo εr = 0"], correct: 1 },
+      { source: "new", q: "Koje je zakonsko ograničenje SAR-a za cijelo tijelo?", a: ["0.08 W/kg", "2 W/kg", "10 W/kg", "100 W/kg"], correct: 0 },
+
+      // J. Pojačala i EKG (88-100)
+      { source: "new", q: "Koja je tipična frekvencijska širina pojasa za mjerenje bioelektričkih potencijala?", a: ["Samo 50 Hz", "Oko 0.01 Hz do 10 kHz", "Samo iznad 1 MHz", "Samo DC signal"], correct: 1 },
+      { source: "new", q: "Tipična amplituda EKG signala je?", a: ["1 – 5 V", "50 μV do 1.2 mV", "1 – 5 nV", "10 – 50 V"], correct: 1 },
+      { source: "new", q: "Koliko tipično iznosi polarizacijski potencijal na sučelju elektrode i kože?", a: ["3 V", "do 300 mV", "30 μV", "0 V (nema ga)"], correct: 1 },
+      { source: "new", q: "Smetnje iz elektroenergetskog sustava tipično dolaze na frekvenciji?", a: ["1 Hz", "50 Hz ili 60 Hz", "1 kHz", "10 MHz"], correct: 1 },
+      { source: "new", q: "Koja je glavna razlika između instrumentacijskog i običnog diferencijalnog pojačala?", a: ["Instrumentacijsko ima manje pojačanje", "Instrumentacijsko ima simetrični ulazni stupanj i beskonačnu ulaznu impedanciju na obje ulazne priključnice", "Instrumentacijsko je jeftinije", "Između njih nema razlike"], correct: 1 },
+      { source: "new", q: "Kako se ostvaruje izmjenično vezivanje (AC coupling) ulaznog stupnja pojačala?", a: ["Paralelnim otpornikom", "Uključivanjem visokopropusnog filtra u ulazni stupanj", "Indukcijskom zavojnicom", "Niskopropusnim filtrom u izlaznom stupnju"], correct: 1 },
+      { source: "new", q: "O čemu ovisi CMRR?", a: ["Samo o temperaturi okoliša", "O frekvenciji signala (tipično pada na višim frekvencijama) i o asimetričnosti impedancija elektroda-koža", "O boji elektrode", "Ni o čemu (konstanta je)"], correct: 1 },
+      { source: "new", q: "Koji je standardni algoritam za detekciju QRS kompleksa u EKG-u?", a: ["FFT", "Wavelet bazna", "Pan-Tompkinsov algoritam", "Kalmanov filtar"], correct: 2 },
+      { source: "new", q: "Koji je slijed operacija u Pan-Tompkinsovom algoritmu?", a: ["Samo diferenciranje", "Nisko-propusni filtar + visoko-propusni filtar + derivacija + kvadriranje + integriranje + adaptivni prag", "Samo Fourierova transformacija i prag", "Samo autokorelacija"], correct: 1 },
+      { source: "new", q: "Što se koristi za zaštitu ulaznog stupnja pojačala od visokih napona (npr. defibrilator)?", a: ["Samo otpornici velike snage", "Antiparalelno spojene diode, Zenerove diode ili plinom punjene cijevi", "Samo kondenzatori", "Metalno oklapanje oko pacijenta"], correct: 1 },
+      { source: "new", q: "Koliki je tipični unutarnji otpor elektrokirurškog noža?", a: ["50 Ω", "oko 500 Ω", "5 kΩ", "50 kΩ"], correct: 1 },
+      { source: "new", q: "Osim mjerenja frekvencije srca, za što se još koristi detekcija QRS kompleksa?", a: ["Mjerenje krvnog tlaka", "Sinkronizacija rada pacemakera", "Dijagnostika oka", "Analiza boje krvi"], correct: 1 },
+      { source: "new", q: "Zašto se u ulaznom stupnju pojačala ne koristi preveliko pojačanje?", a: ["Zato što su pojačala skupa", "Pojačalo bi ušlo u zasićenje zbog polarizacijskog potencijala (DC komponente)", "Zbog brzine rada", "Nema tehničkog razloga"], correct: 1 }
+    ];
+
+    const ALL_QUESTIONS = [...OFFICIAL_QUESTIONS, ...NEW_QUESTIONS];
+
     const state = {
       questions: [],
       current: 0,
       correctCount: 0,
       answered: false,
-      wrongs: [],      // {q, correct, chosen}
+      wrongs: [],
       count: 'all',
+      source: 'all',
       shuffleQuestions: true,
       shuffleAnswers: true,
     };
 
-    // ========================================
-    // HELPERS
-    // ========================================
     function shuffle(arr) {
       const a = [...arr];
       for (let i = a.length - 1; i > 0; i--) {
@@ -832,14 +778,30 @@
       document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
       const el = document.getElementById(id);
       el.classList.remove('hidden');
-      // retrigger animation
       el.style.animation = 'none';
       requestAnimationFrame(() => { el.style.animation = ''; });
     }
 
-    // ========================================
-    // START SCREEN
-    // ========================================
+    function poolForSource(source) {
+      if (source === 'official') return OFFICIAL_QUESTIONS;
+      if (source === 'new') return NEW_QUESTIONS;
+      return ALL_QUESTIONS;
+    }
+
+    function updateCountAllLabel() {
+      const pool = poolForSource(state.source);
+      document.getElementById('count-all-chip').textContent = `Sva (${pool.length})`;
+    }
+
+    document.querySelectorAll('#source-chips .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#source-chips .chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        state.source = chip.dataset.source;
+        updateCountAllLabel();
+      });
+    });
+
     document.querySelectorAll('#count-chips .chip').forEach(chip => {
       chip.addEventListener('click', () => {
         document.querySelectorAll('#count-chips .chip').forEach(c => c.classList.remove('active'));
@@ -868,16 +830,20 @@
     document.getElementById('start-btn').addEventListener('click', startQuiz);
 
     function startQuiz() {
-      let pool = state.shuffleQuestions ? shuffle(ALL_QUESTIONS) : [...ALL_QUESTIONS];
-      const n = state.count === 'all' ? pool.length : parseInt(state.count, 10);
+      let pool = poolForSource(state.source);
+      pool = state.shuffleQuestions ? shuffle(pool) : [...pool];
+
+      let n;
+      if (state.count === 'all') n = pool.length;
+      else n = Math.min(parseInt(state.count, 10), pool.length);
       pool = pool.slice(0, n);
 
-      // optionally shuffle answers inside each question
       state.questions = pool.map(q => {
         if (!state.shuffleAnswers) return { ...q };
         const indexed = q.a.map((text, i) => ({ text, wasCorrect: i === q.correct }));
         const shuffled = shuffle(indexed);
         return {
+          source: q.source,
           q: q.q,
           a: shuffled.map(x => x.text),
           correct: shuffled.findIndex(x => x.wasCorrect)
@@ -893,9 +859,6 @@
       show('quiz-screen');
     }
 
-    // ========================================
-    // QUIZ SCREEN
-    // ========================================
     function renderQuestion() {
       const { questions, current } = state;
       const q = questions[current];
@@ -907,6 +870,11 @@
       document.getElementById('progress-fill').style.width = `${(current / total) * 100}%`;
       document.getElementById('question-num').textContent = `Pitanje ${String(current + 1).padStart(2, '0')}`;
       document.getElementById('question-text').textContent = q.q;
+
+      const badgeContainer = document.getElementById('source-badge-container');
+      badgeContainer.innerHTML = q.source === 'official'
+        ? '<div class="source-badge official">Službeno pitanje</div>'
+        : '<div class="source-badge new">Novo — iz predavanja</div>';
 
       const container = document.getElementById('answers-container');
       container.innerHTML = '';
@@ -933,6 +901,7 @@
         state.correctCount++;
       } else {
         state.wrongs.push({
+          source: q.source,
           q: q.q,
           correct: q.a[q.correct],
           chosen: q.a[idx]
@@ -970,9 +939,6 @@
       }
     }
 
-    // ========================================
-    // KEYBOARD
-    // ========================================
     document.addEventListener('keydown', (e) => {
       if (!document.getElementById('quiz-screen').classList.contains('hidden')) {
         if (!state.answered && ['1', '2', '3', '4'].includes(e.key)) {
@@ -990,9 +956,6 @@
       }
     });
 
-    // ========================================
-    // RESULTS
-    // ========================================
     function showResults() {
       const total = state.questions.length;
       const score = state.correctCount;
@@ -1021,7 +984,11 @@
         state.wrongs.forEach(w => {
           const item = document.createElement('div');
           item.className = 'review-item';
+          const badge = w.source === 'official'
+            ? '<span class="review-badge official">Službeno</span>'
+            : '<span class="review-badge new">Novo</span>';
           item.innerHTML = `
+            ${badge}
             <div class="q">${w.q}</div>
             <div class="your">Tvoj odgovor: ${w.chosen}</div>
             <div class="correct-ans">Točan odgovor: ${w.correct}</div>
@@ -1036,6 +1003,8 @@
     document.getElementById('restart-btn').addEventListener('click', () => {
       show('start-screen');
     });
+
+    updateCountAllLabel();
   </script>
 </body>
 </html>
