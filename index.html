@@ -365,54 +365,6 @@
     }
     .next-btn:hover { background: var(--accent-hover); transform: translateX(2px); }
 
-    .prev-btn {
-      background: transparent;
-      color: var(--ink-soft);
-      border: 1px solid var(--rule);
-      padding: 13px 18px;
-      border-radius: 3px;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-      flex-shrink: 0;
-    }
-    .prev-btn:hover:not(:disabled) {
-      border-color: var(--ink);
-      color: var(--ink);
-      transform: translateX(-2px);
-    }
-    .prev-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    .nav-buttons {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .preview-banner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 12px 18px;
-      border-radius: 3px;
-      margin-bottom: 16px;
-      font-size: 13px;
-      background: var(--amber-bg);
-      color: var(--amber);
-      border-left: 3px solid var(--amber);
-      animation: slideUp 0.25s ease both;
-    }
-    .preview-banner-text { font-weight: 600; letter-spacing: 0.02em; }
-
     .keyboard-hint {
       text-align: center;
       margin-top: 32px;
@@ -543,7 +495,7 @@
       <div class="hero">
         <div class="eyebrow">Tehnologija u medicini</div>
         <h1>Provjeri <em>znanje</em> prije ispita.</h1>
-        <p class="lede">200 pitanja: 40 iz arhiva međuispita (službena) i 160 generiranih iz predavanja 2024./25. (nova — za dodatnu vježbu). Svako pitanje je jasno označeno tako da znaš što rješavaš.</p>
+        <p class="lede">140 pitanja: 40 iz arhiva međuispita (službena) i 100 generiranih iz predavanja 2024./25. (nova — za dodatnu vježbu). Svako pitanje je jasno označeno tako da znaš što rješavaš.</p>
       </div>
 
       <div class="options">
@@ -551,9 +503,9 @@
         <div class="option-row">
           <label>Izvor pitanja</label>
           <div class="chips" id="source-chips">
-            <button class="chip active" data-source="all">Sva (200)</button>
+            <button class="chip active" data-source="all">Sva (140)</button>
             <button class="chip" data-source="official">Službena (40)</button>
-            <button class="chip" data-source="new">Nova (160)</button>
+            <button class="chip" data-source="new">Nova (100)</button>
           </div>
         </div>
         <div class="option-row">
@@ -562,7 +514,7 @@
             <button class="chip" data-count="10">10</button>
             <button class="chip" data-count="20">20</button>
             <button class="chip" data-count="50">50</button>
-            <button class="chip active" data-count="all" id="count-all-chip">Sva (200)</button>
+            <button class="chip active" data-count="all" id="count-all-chip">Sva (140)</button>
           </div>
         </div>
         <div class="option-row">
@@ -596,7 +548,7 @@
       <div id="feedback-container"></div>
 
       <div class="keyboard-hint">
-        Odaberi tipkama <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> · sljedeće <kbd>Enter</kbd> / <kbd>→</kbd> · prethodno <kbd>←</kbd>
+        Odaberi tipkama <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> · sljedeće <kbd>Enter</kbd>
       </div>
     </section>
 
@@ -632,7 +584,7 @@
 
   <script>
     // source: "official" = iz arhiva međuispita (40)
-    // source: "new"      = generirano iz predavanja 2024./25. za dodatnu vježbu (160)
+    // source: "new"      = generirano iz predavanja 2024./25. za dodatnu vježbu (100)
 
     const OFFICIAL_QUESTIONS = [
       { source: "official", q: "Najzastupljeniji element u ljudskom tijelu je?", a: ["Vodik (H)", "Kisik (O)", "Ugljik (C)", "Dušik (N)"], correct: 0 },
@@ -796,83 +748,7 @@
       { source: "new", q: "Što se koristi za zaštitu ulaznog stupnja pojačala od visokih napona (npr. defibrilator)?", a: ["Samo otpornici velike snage", "Antiparalelno spojene diode, Zenerove diode ili plinom punjene cijevi", "Samo kondenzatori", "Metalno oklapanje oko pacijenta"], correct: 1 },
       { source: "new", q: "Koliki je tipični unutarnji otpor elektrokirurškog noža?", a: ["50 Ω", "oko 500 Ω", "5 kΩ", "50 kΩ"], correct: 1 },
       { source: "new", q: "Osim mjerenja frekvencije srca, za što se još koristi detekcija QRS kompleksa?", a: ["Mjerenje krvnog tlaka", "Sinkronizacija rada pacemakera", "Dijagnostika oka", "Analiza boje krvi"], correct: 1 },
-      { source: "new", q: "Zašto se u ulaznom stupnju pojačala ne koristi preveliko pojačanje?", a: ["Zato što su pojačala skupa", "Pojačalo bi ušlo u zasićenje zbog polarizacijskog potencijala (DC komponente)", "Zbog brzine rada", "Nema tehničkog razloga"], correct: 1 },
-
-      // K. Modeliranje — dopune (101-110)
-      { source: "new", q: "Koji je cilj Physiome Projecta?", a: ["Mapirati ljudski genom", "Razviti integrativne modele fiziologije na svim razinama biološke organizacije (od gena do cijelog organizma)", "Projektirati nove lijekove", "Samo modelirati srce"], correct: 1 },
-      { source: "new", q: "U primjeru akvarija, koji toksični produkt nitrifikacijske bakterije oksidiraju?", a: ["Amonijak (NH₃) u nitrit (NO₂⁻), pa potom nitrit u nitrat (NO₃⁻)", "Nitrat izravno u dušik", "Kisik u ozon", "CO₂ u karbonate"], correct: 0 },
-      { source: "new", q: "Koji je najmanje toksičan dušični spoj za ribe u akvariju?", a: ["NH₃ (amonijak)", "NO₂⁻ (nitrit)", "NO₃⁻ (nitrat)", "N₂O (dušikov(I) oksid)"], correct: 2 },
-      { source: "new", q: "Na kojem zakonu se temelji jednostavan model akvarija iz predavanja?", a: ["Zakon ohma", "Zakon o očuvanju mase", "Zakon o očuvanju energije", "Drugi Newtonov zakon"], correct: 1 },
-      { source: "new", q: "Kada u SIR modelu širenja epidemije skup I predstavlja?", a: ["Neinficirane osobe podložne zarazi", "Zaražene osobe", "Osobe koje su se oporavile od infekcije", "Imune osobe od rođenja"], correct: 1 },
-      { source: "new", q: "Po čemu se SEIR model razlikuje od SIR modela?", a: ["Uvodi skup E (izloženi / exposed), tj. osobe u inkubaciji", "Uklanja skup oporavljenih", "Koristi samo dva skupa", "Modelira samo smrtnost"], correct: 0 },
-      { source: "new", q: "Kod ill-posed problema s više jednadžbi nego nepoznanica u primjeru akvarija, kako se rješenje dobiva?", a: ["Odbacivanjem viška jednadžbi", "Metodom najmanjih kvadrata", "Samo Gaussovom eliminacijom", "Iteracijom jedan po jedan"], correct: 1 },
-      { source: "new", q: "Što je glavna prednost in silico modela u odnosu na in vivo?", a: ["Potpuno zamjenjuje biološke eksperimente", "Jeftiniji, ponovljiv, ne zahtijeva pokuse na živim bićima u ranim fazama istraživanja", "Uvijek je točniji od eksperimenta", "Ne zahtijeva matematičko znanje"], correct: 1 },
-      { source: "new", q: "Što se preporučuje pri razvoju simulacijskih modela?", a: ["Odmah započeti s najsloženijim modelom", "Postupno povećavati kompleksnost modela", "Izbjegavati validaciju", "Koristiti samo stohastičke modele"], correct: 1 },
-      { source: "new", q: "Što je dobar model prema predavanju?", a: ["Što složeniji, to bolji", "Kompromis između realističnosti i jednostavnosti", "Uvijek 1:1 kopija realnog sustava", "Potpuno neovisan o sustavu"], correct: 1 },
-
-      // L. Hodgkin-Huxley — produbljeno (111-118)
-      { source: "new", q: "Na kojem preparatu su Hodgkin i Huxley radili eksperimente?", a: ["Miš miokard", "Divovski akson lignje", "Neuron štakora", "Akson čovjeka"], correct: 1 },
-      { source: "new", q: "Tko je i kada uveo metodu priklještenja napona (voltage clamp)?", a: ["Hodgkin, 1952.", "Cole, 1945.", "Huxley, 1963.", "Nernst, 1889."], correct: 1 },
-      { source: "new", q: "Zašto je voltage clamp tehnika važna za eksperimentalno razdvajanje kapacitivne i ionske struje?", a: ["Jer grije membranu", "Jer održava Vm konstantnim (dVm/dt = 0), pa kapacitivna struja nestaje", "Jer mijenja koncentraciju iona", "Jer blokira sve ionske kanale"], correct: 1 },
-      { source: "new", q: "U HH modelu ionska struja je podijeljena na?", a: ["IK i INa, a dodatno struju gubitaka Il za ione kroz naponom-neupravljane kanale", "Samo INa", "INa i Ica (kalcij)", "Tri jednake komponente"], correct: 0 },
-      { source: "new", q: "Koje tri varijable HH modela opisuju vodljivost za natrij?", a: ["Samo n", "m (aktivacija) i h (inaktivacija)", "m, h i k", "Samo h"], correct: 1 },
-      { source: "new", q: "Koja varijabla opisuje aktivaciju vodljivosti za kalij u HH modelu?", a: ["m", "h", "n", "l"], correct: 2 },
-      { source: "new", q: "Ionska struja pojedinog kanala proporcionalna je?", a: ["Samo vodljivosti g", "Umnošku vodljivosti i razlike (Vm − Eion), gdje je Eion Nernstov potencijal", "Samo naponu membrane", "Recipročnoj vrijednosti kapaciteta"], correct: 1 },
-      { source: "new", q: "Što opisuje jednadžba Im = Cm·dVm/dt + Iionska?", a: ["Akcijski potencijal u mišiću", "Podjelu ukupne struje kroz membranu na kapacitivnu i ionsku komponentu", "Nernstovu jednadžbu", "Fickov zakon difuzije"], correct: 1 },
-
-      // M. Stanice, ioni, fiziologija — dopune (119-126)
-      { source: "new", q: "Kolika je tipična debljina polupropusne stanične membrane?", a: ["~1 nm", "~10 nm", "~100 nm", "~1 μm"], correct: 1 },
-      { source: "new", q: "Koja dva najzastupljenija elementa u ljudskom tijelu prema masi čine gotovo 84 % tjelesne mase?", a: ["Vodik i dušik", "Kisik (~65 %) i ugljik (~18.5 %)", "Ugljik i kalcij", "Natrij i kalij"], correct: 1 },
-      { source: "new", q: "Postotak (broj atoma) vodika u ljudskom tijelu je oko?", a: ["~10 %", "~30 %", "~62 %", "~90 %"], correct: 2 },
-      { source: "new", q: "Koji proteini stvaraju pore u membrani za prijenos iona?", a: ["Lipidi", "Proteini-kanali (ionski kanali)", "Ugljikohidrati", "Nukleinske kiseline"], correct: 1 },
-      { source: "new", q: "Po čemu se aktivni ionski kanali razlikuju od pasivnih?", a: ["Aktivni su stalno otvoreni", "Aktivni se otvaraju i zatvaraju na vanjsku pobudu (napon, ligand, istezanje) i strogo su selektivni", "Aktivni ne prenose ione", "Pasivni su upravljani naponom"], correct: 1 },
-      { source: "new", q: "Kako se zove idealizirani model izvora u kojem struja izvire na jednom i ponire na drugom kraju?", a: ["Monopol", "Strujni dipol", "Kvadrupol", "Torus"], correct: 1 },
-      { source: "new", q: "Napon izmjeren između para EKG elektroda proporcionalan je?", a: ["Apsolutnoj vrijednosti dipola", "Projekciji vektora dipola na pravac koji prolazi elektrodama", "Otporu elektroda", "Frekvenciji otkucaja"], correct: 1 },
-      { source: "new", q: "U nepobuđenoj (mirujućoj) stanici koncentracija Na⁺ je veća?", a: ["U citoplazmi", "U izvanstaničnoj tekućini", "Jednaka je s obje strane", "Unutar mitohondrija"], correct: 1 },
-
-      // N. Mozak i EEG — dopune (127-134)
-      { source: "new", q: "Površina čovječje moždane kore zbog vijuga (gyri) i brazdi (sulci) iznosi oko?", a: ["200 cm²", "2000 cm²", "20 000 cm²", "2 m²"], correct: 1 },
-      { source: "new", q: "Koji se režanj bavi planiranjem akcija, pažnjom, raspoloženjem i sadrži primarni motorički korteks?", a: ["Frontalni (čeoni)", "Parijetalni", "Temporalni", "Okcipitalni"], correct: 0 },
-      { source: "new", q: "Autonomni živčani sustav dijeli se na?", a: ["Voljni i nevoljni", "Simpatički i parasimpatički (antagonističke regulatorne komponente)", "Motorički i senzorički", "Gornji i donji"], correct: 1 },
-      { source: "new", q: "Parasimpatički živčani sustav tipično?", a: ["Ubrzava srce i podiže krvni tlak", "Usporava frekvenciju srca, smanjuje snagu srčanih kontrakcija i snižava krvni tlak", "Troši tjelesne zalihe energije u stresu", "Ne utječe na srce"], correct: 1 },
-      { source: "new", q: "β-valovi se dijele na βI (14–30 Hz) i βII (30–50 Hz) i najčešće se registriraju?", a: ["U okcipitalnoj regiji", "Na frontalnim i parijetalnim regijama", "Samo u temporalnom režnju", "Samo u produženoj moždini"], correct: 1 },
-      { source: "new", q: "Tipična amplituda β-valova iznosi?", a: ["Do 5 μV", "Do 20 μV", "Do 100 μV", "Do 5 mV"], correct: 1 },
-      { source: "new", q: "U studiji procjene kognitivnog zamora studenata koristila se paradigma?", a: ["Continuous Performance Test bez EEG-a", "Oddball paradigma s rijetkim podražajem i mjerenje P300 evociranog potencijala", "Samo fMRI", "Samo upitnik"], correct: 1 },
-      { source: "new", q: "Što se dogodilo s amplitudom P300 kod umornog stanja u toj studiji u odnosu na odmorno?", a: ["Statistički značajno manja amplituda (≈8.7 μV vs ≈10.6 μV)", "Statistički značajno veća amplituda", "Nema razlike", "P300 se ne pojavljuje uopće"], correct: 0 },
-
-      // O. Mišići i EMG — dopune (135-141)
-      { source: "new", q: "Kolika je tipična amplituda površinskog EMG signala?", a: ["1 – 10 nV", "Od 100 μV do 5 mV", "1 – 5 V", "10 – 100 V"], correct: 1 },
-      { source: "new", q: "Kolika je tipična frekvencijska širina pojasa površinskog EMG signala?", a: ["0.1 – 1 Hz", "10 – 500 Hz", "500 – 5000 Hz", "1 – 10 MHz"], correct: 1 },
-      { source: "new", q: "Kako se mijenja spektar EMG signala uslijed umora mišića?", a: ["Pomiče se prema višim frekvencijama", "Pomiče se prema nižim frekvencijama", "Ne mijenja se", "Pojavljuju se samo DC komponente"], correct: 1 },
-      { source: "new", q: "HDsEMG (High Density Surface EMG) koristi?", a: ["Samo jedan par elektroda", "Matricu (niz) više malih elektroda za prostornu i vremensku analizu mišićne aktivacije", "Invazivne iglene elektrode", "Samo jedan optički senzor"], correct: 1 },
-      { source: "new", q: "Što određuje tip mišićnog vlakna (SO, FOG, FG)?", a: ["Veličina mišića", "Brzina kojom molekula miozina hidrolizira molekulu ATP-a pri kontrakciji", "Debljina kože iznad mišića", "Dužina tetive"], correct: 1 },
-      { source: "new", q: "Neuromuskularna veza najčešće se nalazi?", a: ["Na jednom kraju mišićnog vlakna", "U pravilu na središnjem dijelu mišićnog vlakna (da se depolarizacija širi u oba smjera)", "Izvan mišića", "U tetivi"], correct: 1 },
-      { source: "new", q: "Iglene (needle) i fine-wire elektrode za EMG primarno se koriste za?", a: ["Samo kozmetičke analize", "Mjerenje brzine provodljivosti živaca, analizu amplitude, valnog oblika i latencije akcijskih potencijala živaca i mišića", "Snimanje EKG-a", "Neinvazivno praćenje disanja"], correct: 1 },
-
-      // P. Krvotok i srčani ciklus — dopune (142-148)
-      { source: "new", q: "Koliko otprilike otkucaja srce tipično napravi u životu?", a: ["~100 000", "~3 milijarde", "~300 milijardi", "~10 milijardi"], correct: 1 },
-      { source: "new", q: "Maksimalni minutni volumen srca u dobro treniranih sportaša može dosegnuti?", a: ["~5 L/min", "~10 L/min", "~25 L/min", "~40 L/min"], correct: 3 },
-      { source: "new", q: "Mali (plućni) krvotok vodi krv iz?", a: ["Lijevog ventrikula u aortu", "Desnog ventrikula u plućnu arteriju → pluća → plućne vene → lijevi atrij", "Lijevog atrija u desni atrij", "Vena cava u jetru"], correct: 1 },
-      { source: "new", q: "Koji zalisci odvajaju atrije od ventrikula?", a: ["Aortni i pulmonalni", "Trikuspidni (desno) i bikuspidni / mitralni (lijevo)", "Samo mitralni", "Ni jedan"], correct: 1 },
-      { source: "new", q: "Kolika je tipična brzina srčanog ritma u žena u odnosu na muškarce prema predavanju?", a: ["Viša za 10-20 % u žena, tj. minutni volumen je za 10-20 % niži", "Jednaka", "Niža za 50 % u žena", "Viša za 200 % u žena"], correct: 0 },
-      { source: "new", q: "Koja provodna vlakna prenose impuls od AV čvora prema ventrikulima, pa zatim u desnu i lijevu granu te na kraju?", a: ["Samo Purkinje vlakna", "Vlakna Hisovog snopa → desna i lijeva grana → Purkinje vlakna", "Samo SA čvor", "Aksoni perifernog živčanog sustava"], correct: 1 },
-      { source: "new", q: "Što opisuje RR interval u EKG signalu?", a: ["Trajanje QRS kompleksa", "Vrijeme između dva uzastopna R vrška, tj. period otkucaja srca", "Trajanje repolarizacije", "Trajanje P vala"], correct: 1 },
-
-      // R. Respiracija, digestija, izlučivanje (149-154)
-      { source: "new", q: "Što je ExtraCorporeal Life Support (ECLS)?", a: ["Samo unutarnji pacemaker", "Vantjelesna potpora cirkulaciji I respiraciji („umjetno srce i pluća”)", "Uređaj za dijalizu", "Vrsta mjerača krvnog tlaka"], correct: 1 },
-      { source: "new", q: "Prvi uspješan pacijent na ECLS-u (J. Donald Hill, Santa Barbara) bio je 1971. god. liječen Bramson oksigenatorom koliko sati?", a: ["5 h", "24 h", "75 h", "30 dana"], correct: 2 },
-      { source: "new", q: "Pumpe s izbačajem volumena (displacement pumps) u odnosu na pumpe s kontinuiranim protokom?", a: ["Daju pulsatilni protok, ali su veće i imaju problem s frekvencijom pri minijaturizaciji", "Uvijek su manje", "Imaju veći protok u svim uvjetima", "Troše više energije bez iznimke"], correct: 0 },
-      { source: "new", q: "U endoskopskim kapsulama prijamnik je pričvršćen oko pojasa, a signal se s kamere prenosi kroz ljudsko tijelo. Koji komunikacijski princip se time demonstrira?", a: ["Bluetooth", "Intrabody Communication (IBC)", "Wi-Fi 6", "Infracrveni prijenos"], correct: 1 },
-      { source: "new", q: "Najvažnija zadaća limfe je?", a: ["Transport hormona", "Odnošenje proteina i drugih tvari iz međustaničnih prostora (intersticija) – bez toga nastao bi poremećaj koloidno-osmotskog tlaka", "Regulacija temperature", "Stvaranje inzulina"], correct: 1 },
-      { source: "new", q: "Tipičan broj kostiju u odrasloga čovjeka (206–213) može varirati jer?", a: ["Neki imaju dodatno rebro ili slabinski kralježak (anatomske varijacije)", "Kosti nestaju s godinama", "Broj kostiju varira ovisno o spolu za stotine", "Ovisi o težini"], correct: 0 },
-
-      // S. Pojačala, elektrode, signal IBC — dopune (155-160)
-      { source: "new", q: "Koja tkiva pokazuju anizotropnost (različita svojstva u različitim smjerovima, tipično uzduž stanice-vlakna)?", a: ["Nema anizotropnih bioloških tkiva", "Biološka tkiva poput mišića i živaca", "Samo kost", "Samo krv"], correct: 1 },
-      { source: "new", q: "Koji se model koristi za opis pasivnih električkih značajki sučelja elektroda-koža?", a: ["Samo čisti otpor", "Idealne električne komponente s koncentriranim parametrima (otpor i kapacitet)", "Samo indukcijska zavojnica", "Nelinearni tranzistorski model"], correct: 1 },
-      { source: "new", q: "Zašto se unutrašnjost organizma u nadomjesnoj shemi može nadomjestiti „virtualnom elektrodom” velike vodljivosti?", a: ["Zbog niske koncentracije iona", "Jer je zbog visoke koncentracije ionima bogate izvanstanične tekućine vodljiva", "Zato što je suha", "Zbog izolacije kostiju"], correct: 1 },
-      { source: "new", q: "Koja je razlika između kapacitivnog i galvanskog IBC prijenosa?", a: ["Nema razlike", "Kapacitivni koristi elektrode na tijelu i okolinu (GND kroz zrak/elektromagnetsko vezivanje); galvanski koristi 4 elektrode izravno na tijelu s diferencijalnim signalom", "Kapacitivni zahtijeva optičku vezu", "Galvanski radi samo u vodi"], correct: 1 },
-      { source: "new", q: "Glavna funkcija instrumentacijskog pojačala u mjerenju bioelektričkih potencijala je?", a: ["Pojačavanje zajedničkog signala", "Visoko pojačanje diferencijalnog (korisnog) signala uz visoki CMRR i visoku ulaznu impedanciju na oba ulaza", "Pretvaranje napona u struju", "Filtriranje DC komponente bez pojačanja"], correct: 1 },
-      { source: "new", q: "Pri mjerenju bioelektričkih potencijala, koja se elektroda najčešće koristi kao neinvazivna na koži?", a: ["Igla elektroda", "Ag/AgCl (srebro-srebrov klorid) površinska elektroda", "Čelična plahta", "Staklena kapilara"], correct: 1 }
+      { source: "new", q: "Zašto se u ulaznom stupnju pojačala ne koristi preveliko pojačanje?", a: ["Zato što su pojačala skupa", "Pojačalo bi ušlo u zasićenje zbog polarizacijskog potencijala (DC komponente)", "Zbog brzine rada", "Nema tehničkog razloga"], correct: 1 }
     ];
 
     const ALL_QUESTIONS = [...OFFICIAL_QUESTIONS, ...NEW_QUESTIONS];
@@ -963,24 +839,15 @@
       pool = pool.slice(0, n);
 
       state.questions = pool.map(q => {
-        let base;
-        if (!state.shuffleAnswers) {
-          base = { ...q };
-        } else {
-          const indexed = q.a.map((text, i) => ({ text, wasCorrect: i === q.correct }));
-          const shuffled = shuffle(indexed);
-          base = {
-            source: q.source,
-            q: q.q,
-            a: shuffled.map(x => x.text),
-            correct: shuffled.findIndex(x => x.wasCorrect)
-          };
-        }
-        // Per-question answer state (populated on first answer; guards re-scoring on revisit)
-        base.chosenIdx = null;
-        base.answered = false;
-        base.scored = false;
-        return base;
+        if (!state.shuffleAnswers) return { ...q };
+        const indexed = q.a.map((text, i) => ({ text, wasCorrect: i === q.correct }));
+        const shuffled = shuffle(indexed);
+        return {
+          source: q.source,
+          q: q.q,
+          a: shuffled.map(x => x.text),
+          correct: shuffled.findIndex(x => x.wasCorrect)
+        };
       });
 
       state.current = 0;
@@ -995,8 +862,7 @@
     function renderQuestion() {
       const { questions, current } = state;
       const q = questions[current];
-      // state.answered mirrors q.answered so keydown handler logic stays in sync
-      state.answered = q.answered;
+      state.answered = false;
 
       const total = questions.length;
       document.getElementById('progress-text').textContent = `Pitanje ${current + 1} od ${total}`;
@@ -1018,85 +884,28 @@
         btn.className = 'answer';
         btn.dataset.index = i;
         btn.innerHTML = `<span class="letter">${letters[i]}</span><span>${text}</span>`;
-        if (!q.answered) {
-          btn.addEventListener('click', () => chooseAnswer(i));
-        } else {
-          // Preview mode: answers are read-only, show original choice + correct answer
-          btn.disabled = true;
-          if (i === q.correct) btn.classList.add('correct');
-          else if (i === q.chosenIdx) btn.classList.add('wrong');
-          else btn.classList.add('dimmed');
-        }
+        btn.addEventListener('click', () => chooseAnswer(i));
         container.appendChild(btn);
       });
 
       document.getElementById('feedback-container').innerHTML = '';
-
-      if (q.answered) {
-        renderAnsweredFeedback(q, /*isReview=*/ true);
-      }
-    }
-
-    function renderAnsweredFeedback(q, isReview) {
-      // isReview = true when visiting an already-answered question (via Prev/Next)
-      // isReview = false when user just answered now
-      const isCorrect = q.chosenIdx === q.correct;
-      const isLast = state.current === state.questions.length - 1;
-      const hasPrev = state.current > 0;
-
-      const fb = document.createElement('div');
-      fb.className = `feedback ${isCorrect ? 'correct' : 'wrong'}`;
-      const prevBtnHtml = hasPrev
-        ? `<button class="prev-btn" id="prev-btn"><span>←</span> Prethodno</button>`
-        : '';
-      fb.innerHTML = `
-        <div class="feedback-text">${isCorrect ? '✓ Točno!' : '✗ Netočno'}</div>
-        <div class="nav-buttons">
-          ${prevBtnHtml}
-          <button class="next-btn" id="next-btn">
-            ${isLast ? 'Rezultati' : 'Sljedeće'}
-            <span>→</span>
-          </button>
-        </div>
-      `;
-
-      const fbContainer = document.getElementById('feedback-container');
-
-      if (isReview) {
-        // Read-only preview banner to make it clear the user can't change their answer
-        const banner = document.createElement('div');
-        banner.className = 'preview-banner';
-        banner.innerHTML = `<div class="preview-banner-text">Pregled ranijeg odgovora — ne može se promijeniti</div>`;
-        fbContainer.appendChild(banner);
-      }
-
-      fbContainer.appendChild(fb);
-      document.getElementById('next-btn').addEventListener('click', nextQuestion);
-      const prevBtn = document.getElementById('prev-btn');
-      if (prevBtn) prevBtn.addEventListener('click', prevQuestion);
     }
 
     function chooseAnswer(idx) {
-      const q = state.questions[state.current];
-      if (q.answered) return; // double-click / keyboard race guard
-      q.answered = true;
-      q.chosenIdx = idx;
+      if (state.answered) return;
       state.answered = true;
 
+      const q = state.questions[state.current];
       const isCorrect = idx === q.correct;
-      // scored flag prevents double-counting if we ever re-enter this path
-      if (!q.scored) {
-        q.scored = true;
-        if (isCorrect) {
-          state.correctCount++;
-        } else {
-          state.wrongs.push({
-            source: q.source,
-            q: q.q,
-            correct: q.a[q.correct],
-            chosen: q.a[idx]
-          });
-        }
+      if (isCorrect) {
+        state.correctCount++;
+      } else {
+        state.wrongs.push({
+          source: q.source,
+          q: q.q,
+          correct: q.a[q.correct],
+          chosen: q.a[idx]
+        });
       }
 
       document.querySelectorAll('.answer').forEach((btn, i) => {
@@ -1106,7 +915,18 @@
         else btn.classList.add('dimmed');
       });
 
-      renderAnsweredFeedback(q, /*isReview=*/ false);
+      const fb = document.createElement('div');
+      fb.className = `feedback ${isCorrect ? 'correct' : 'wrong'}`;
+      fb.innerHTML = `
+        <div class="feedback-text">${isCorrect ? '✓ Točno!' : '✗ Netočno'}</div>
+        <button class="next-btn" id="next-btn">
+          ${state.current === state.questions.length - 1 ? 'Rezultati' : 'Sljedeće'}
+          <span>→</span>
+        </button>
+      `;
+      document.getElementById('feedback-container').appendChild(fb);
+      document.getElementById('next-btn').addEventListener('click', nextQuestion);
+
       document.getElementById('score-text').textContent = `${state.correctCount} točno`;
     }
 
@@ -1119,24 +939,15 @@
       }
     }
 
-    function prevQuestion() {
-      if (state.current === 0) return;
-      state.current--;
-      renderQuestion();
-    }
-
     document.addEventListener('keydown', (e) => {
       if (!document.getElementById('quiz-screen').classList.contains('hidden')) {
-        const q = state.questions[state.current];
-        if (!q.answered && ['1', '2', '3', '4'].includes(e.key)) {
+        if (!state.answered && ['1', '2', '3', '4'].includes(e.key)) {
           const idx = parseInt(e.key, 10) - 1;
+          const q = state.questions[state.current];
           if (idx < q.a.length) chooseAnswer(idx);
-        } else if (q.answered && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight')) {
+        } else if (state.answered && (e.key === 'Enter' || e.key === ' ')) {
           e.preventDefault();
           nextQuestion();
-        } else if (e.key === 'ArrowLeft' && state.current > 0) {
-          e.preventDefault();
-          prevQuestion();
         }
       } else if (!document.getElementById('start-screen').classList.contains('hidden')) {
         if (e.key === 'Enter') startQuiz();
