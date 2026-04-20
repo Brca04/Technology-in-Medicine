@@ -1,5 +1,5 @@
 # Technology-in-Medicine
-This repository contains laboratory exercises from the course [Technology in Medicine](https://www.fer.unizg.hr/en/course/tim) at FER.
+This repository contains exercise quiz from the course [Technology in Medicine](https://www.fer.unizg.hr/en/course/tim) at FER.
 
 ## About
 Engineering and medicine intersect in ways that directly shape human health and quality of life. This course introduces the broad landscape of biomedical technology, covering electrophysiology and bioelectric signal processing, biomedical instrumentation, artificial organs (heart, lungs, kidney, pancreas), implantable devices such as cardiac pacemakers and cochlear implants, medical imaging (X-ray, CT, MRI, ultrasound), modelling of biological systems, telemetry for medical and sports monitoring, and the ethical dimensions of applying technology in medicine.
