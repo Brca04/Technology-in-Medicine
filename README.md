@@ -1,5 +1,8 @@
 # Quiz-Repo
-This repository contains exercise quizes from various courses at FER. 
+This repository contains exercise quizes from various courses at FER. Access quzies by clicking on this [link](https://quiz-repo-practice.vercel.app/). 
+
+## Currently active
+- [FOEAHV](https://www.fer.unizg.hr/en/course/foeahv)
 
 ## Courses contained
 - [TIM](https://www.fer.unizg.hr/en/course/tim) - Technology in Medicine - very good quiz
