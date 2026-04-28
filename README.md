@@ -1,5 +1,5 @@
 # Quiz-Repo
-This repository contains exercise quizes from various courses at FER. Access quzies by clicking on this [link](https://quiz-repo-practice.vercel.app/). 
+This repository contains exercise quizzes from various courses at FER. Access quizzes by clicking on this [link](https://quiz-repo-practice.vercel.app/). 
 
 ## Currently active
 - [COMSEC](https://www.fer.unizg.hr/en/course/comsec)
@@ -10,4 +10,4 @@ This repository contains exercise quizes from various courses at FER. Access quz
 - [FOEAHV](https://www.fer.unizg.hr/en/course/foeahv) - Fundamentals of Electric and Hybrid Vehicles - good quiz
 - [COMSEC](https://www.fer.unizg.hr/en/course/comsec) - Computer Security
 
-**Note:** Some quizes are very good, some not so good but all are good enough for studying.
+**Note:** Some quizzes are very good, some not so good but all are good enough for studying. Mostly ai generated quizzes out of official exams and materials.
